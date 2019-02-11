@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:aytos="http://prueba.aytos" xmlns:impl="http://www.examples.com/wsdl/WSPractica.wsdl" xmlns:intf="http://www.examples.com/wsdl/WSPractica.wsdl" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.examples.com/wsdl/WSPractica.wsdl">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+
+	<wsdl:types>
+		<s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" targetNamespace="http://prueba.aytos">
+			<s:complexType name="COCHE">
+				<s:sequence>
+					<s:element maxOccurs="1" minOccurs="1" name="matricula" type="xsd:string"/>
+					<s:element maxOccurs="1" minOccurs="1" name="cv" type="xsd:int"/>
+					<s:element maxOccurs="1" minOccurs="1" name="marca" type="xsd:string"/>
+					<s:element maxOccurs="1" minOccurs="1" name="plazas" type="xsd:int"/>
+				</s:sequence>
+			</s:complexType>
+		</s:schema>
+	</wsdl:types>
+
+   <wsdl:message name="Funcion2Request">
+
+      <wsdl:part name="param1" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="Funcion2Response">
+
+      <wsdl:part name="resp1" type="aytos:COCHE">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Funcion_PortType">
+
+      <wsdl:operation name="Funcion2" parameterOrder="param1">
+
+         <wsdl:input message="impl:Funcion2Request" name="Funcion2Request">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:Funcion2Response" name="Funcion2Response">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="Funcion_PortSoapBinding" type="impl:Funcion_PortType">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="Funcion2">
+
+         <wsdlsoap:operation soapAction="Funcion2"/>
+
+         <wsdl:input name="Funcion2Request">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:WSPractica" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="Funcion2Response">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.examples.com/wsdl/WSPractica.wsdl" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="Funcion_Service">
+
+      <wsdl:port binding="impl:Funcion_PortSoapBinding" name="Funcion_Port">
+
+         <wsdlsoap:address location="http://localhost:8080/ServicioCocheSeparado/services/Funcion_Port"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
